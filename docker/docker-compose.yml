@@ -20,3 +20,17 @@ services:
       - todo-app
     depends_on:
       - todoback
+
+  todotests:
+    image: todotests
+    restart: always
+    depends_on:
+      - todoback
+      - todofront
+    enviroment:
+      - FRONT_HOST=todofront
+    networks:
+      - todo-app
+
+networks:
+  todo-app:
